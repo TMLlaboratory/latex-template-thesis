@@ -29,6 +29,8 @@ make build-local PROJ=<project name> MAIN=sample-en.tex LATEX_PROJECTS_DIR=<pare
 
 The PDF is written to `build/`.
 
+On Overleaf, the English sample is `main.tex` (set the compiler to LuaLaTeX).
+
 ## Usage
 
 ```latex

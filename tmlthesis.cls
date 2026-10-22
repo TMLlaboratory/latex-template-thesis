@@ -60,6 +60,13 @@
 % deluxe gives multiple Japanese weights and avoids the font errors that
 % ltjs* classes raise for bold/italic in mixed Japanese-English text.
 
+% Both warnings below come from luatexja-preset itself and are harmless:
+% the scale is the jsclasses design ratio of Japanese to Latin text, and the
+% ignored feature is the preset's Kerning=Off on the class's default font.
+\ExplSyntaxOn
+\msg_redirect_name:nnn { luatexja-preset } { scale } { info }
+\msg_redirect_name:nnn { luatexja-fontspec } { addjfontfeatures-ignored } { info }
+\ExplSyntaxOff
 \RequirePackage[haranoaji,deluxe]{luatexja-preset}
 \newfontfamily\tml@coverfont{TeX Gyre Heros}
 \newfontfamily\tml@coverfontwide{TeX Gyre Heros}[LetterSpace=12]

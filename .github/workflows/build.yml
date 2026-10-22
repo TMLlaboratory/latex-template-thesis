@@ -1,0 +1,31 @@
+name: build
+
+# Build both samples on the TeX Live versions students are likely to meet:
+# the lab's pinned TL2024, the frozen TL2025, and the current release
+# (what Overleaf moves to). Runs monthly to catch upstream changes.
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: "0 0 1 * *"
+  workflow_dispatch:
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        image: [TL2024-historic, TL2025-historic, latest]
+    runs-on: ubuntu-latest
+    container: texlive/texlive:${{ matrix.image }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build samples
+        run: |
+          for f in sample-ja.tex sample-en.tex tests/draft-ja.tex tests/print-en.tex; do
+            latexmk -r latexmkrc -interaction=nonstopmode -halt-on-error "$f"
+          done
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pdf-${{ matrix.image }}
+          path: build/*.pdf
