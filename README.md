@@ -66,6 +66,7 @@ PDF は `build/` に出力されます。
 | `nolineno` | `draft` のとき行番号を出さない |
 | `showyear` | 表紙に年度を表示。年度はビルド日から自動計算（1〜3月は前年度）。`\thesisyear{2025}` で上書き可 |
 | `officialcolor` | 表紙の帯を技大 VI の青 `#00A4E5` そのものにする |
+| `nologo` | 表紙に研究室ロゴを出さない |
 | `notheorems` | 定理環境を定義しない（自分で定義する場合） |
 | `10pt` / `11pt` / `12pt` | 本文の文字サイズ（既定 `11pt`） |
 
@@ -96,6 +97,8 @@ PDF は `build/` に出力されます。
 
 既定値は、帯が `#005B80`（技大 VI の青を暗くした色）、アクセントが `#00A4E5`（技大 VI の青）です。
 
+表紙右上の研究室ロゴは `tml-logo.png`（白・透過）です。`\tmlthesissetup{logo=ファイル名}` で差し替え、`nologo` で非表示にできます。
+
 ### 前付け・後付けの環境
 
 | 環境 | 内容 |
@@ -125,4 +128,4 @@ IEEEtran の日本語対応版で、TeX Live に標準で入っています。�
 
 ## ライセンス
 
-MIT License。オプション設計と下書きモードは [kks32/phd-thesis-template](https://github.com/kks32/phd-thesis-template)（MIT）を参考にしています。詳細は [LICENSE](LICENSE) を参照してください。
+MIT License。ただし研究室ロゴ `tml-logo.png` は MIT の対象外で、TML Lab の学生以外は `nologo` で外して使ってください。オプション設計と下書きモードは [kks32/phd-thesis-template](https://github.com/kks32/phd-thesis-template)（MIT）を参考にしています。詳細は [LICENSE](LICENSE) を参照してください。

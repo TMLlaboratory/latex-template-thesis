@@ -67,6 +67,7 @@ On Overleaf, the English sample is `main.tex` (set the compiler to LuaLaTeX).
 | `nolineno` | No line numbers in `draft` mode |
 | `showyear` | Print the academic year on the cover, computed from the build date (January–March counts as the previous year). Override with `\thesisyear{2025}` |
 | `officialcolor` | Use the NUT VI blue `#00A4E5` as is for the cover bands |
+| `nologo` | No lab logo on the cover |
 | `notheorems` | Do not define theorem environments (if you define your own) |
 | `10pt` / `11pt` / `12pt` | Body font size (default: `11pt`) |
 
@@ -96,6 +97,8 @@ Check the university's official English names for your major and field.
 ```
 
 Defaults: bands `#005B80` (the NUT VI blue, darkened), accent `#00A4E5` (the NUT VI blue).
+
+The lab logo at the top right of the cover is `tml-logo.png` (white, transparent). Replace it with `\tmlthesissetup{logo=<file>}` or remove it with `nologo`.
 
 ### Front and back matter environments
 
@@ -127,6 +130,6 @@ of being abbreviated.
 
 ## License
 
-MIT License. The option design and draft mode follow
+MIT License, except for the lab logo `tml-logo.png`, which is not covered: if you are not a TML Lab student, use the `nologo` option. The option design and draft mode follow
 [kks32/phd-thesis-template](https://github.com/kks32/phd-thesis-template) (MIT).
 See [LICENSE](LICENSE).

@@ -24,6 +24,7 @@
 \newif\iftml@showyear   \tml@showyearfalse
 \newif\iftml@official   \tml@officialfalse
 \newif\iftml@theorems   \tml@theoremstrue
+\newif\iftml@logo       \tml@logotrue
 
 \def\tml@fontsize{11pt}
 
@@ -42,6 +43,8 @@
 % officialcolor: use the NUT VI blue (#00A4E5) as is for the cover bands
 \DeclareOption{officialcolor}{\tml@officialtrue}
 \DeclareOption{notheorems}{\tml@theoremsfalse}
+% nologo: no lab logo on the cover
+\DeclareOption{nologo}{\tml@logofalse}
 \DeclareOption{10pt}{\def\tml@fontsize{10pt}}
 \DeclareOption{11pt}{\def\tml@fontsize{11pt}}
 \DeclareOption{12pt}{\def\tml@fontsize{12pt}}
@@ -147,12 +150,16 @@
 \tml@ay=\year
 \ifnum\month<4 \advance\tml@ay by -1 \fi
 
+% White logo on a transparent background, placed in the top band.
+\def\tml@logofile{tml-logo.png}
+
 \ExplSyntaxOn
 \keys_define:nn { tmlthesis }
   {
     maincolor   .code:n = \definecolor{tml@main}{HTML}{#1} ,
     accentcolor .code:n = \definecolor{tml@accent}{HTML}{#1} ,
     subcolor    .code:n = \definecolor{tml@sub}{HTML}{#1} ,
+    logo        .code:n = \def\tml@logofile{#1} ,
   }
 \NewDocumentCommand \tmlthesissetup { m } { \keys_set:nn { tmlthesis } {#1} }
 \ExplSyntaxOff
@@ -207,6 +214,12 @@
       at ([xshift=25mm,yshift=-42mm]TL)
       {\iftml@english\tml@coverfont\bfseries\fontsize{24}{28}\selectfont\tml@degree
        \else\gtfamily\bfseries\fontsize{24}{28}\selectfont\tml@degree\fi};
+    \iftml@logo
+      \IfFileExists{\tml@logofile}{%
+        \node[anchor=east,inner sep=0pt]
+          at ([xshift=-25mm,yshift=-36mm]current page.north east)
+          {\includegraphics[height=17mm]{\tml@logofile}};}{}%
+    \fi
     % titles
     \node[anchor=north west,inner sep=0pt,text width=160mm,align=left,
           font=\tml@coverfont]
@@ -239,7 +252,7 @@
          \tml@efield
        \else
          \gtfamily\tml@juniversity\hspace{.5em}\tml@jschool\\
-         \tml@jmajor\ifx\tml@jfield\@empty\else（\tml@jfield）\fi
+         \gtfamily\tml@jmajor\ifx\tml@jfield\@empty\else（\tml@jfield）\fi
        \fi};
     \iftml@showyear
       \node[anchor=north east,inner sep=0pt,text=white]
