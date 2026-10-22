@@ -49,7 +49,7 @@ The PDF is written to `build/`.
 \chapter{Introduction} ...
 \backmatter
 \begin{acknowledgements} ... \end{acknowledgements}
-\bibliographystyle{IEEEtran}
+\bibliographystyle{jIEEEtran}
 \bibliography{references}
 \end{document}
 ```
@@ -111,9 +111,11 @@ Defaults: bands `#005B80` (the NUT VI blue, darkened), accent `#00A4E5` (the NUT
 
 ### Bibliography
 
-`natbib` is loaded with numeric, sorted and compressed citations. Use
-`IEEEtran` or `plainnat`. If you cite Japanese papers, write the authors'
-names in English, since `IEEEtran` cannot abbreviate Japanese names.
+`natbib` is loaded with numeric, sorted and compressed citations. We
+recommend **`jIEEEtran`** (used in the samples). It is the IEEEtran style
+with Japanese support and ships with TeX Live: English entries look exactly
+like IEEEtran, and Japanese entries, if you cite any, keep full names instead
+of being abbreviated.
 
 ## Notes
 

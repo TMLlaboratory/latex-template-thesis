@@ -50,7 +50,7 @@ PDF は `build/` に出力されます。
 \chapter{序論} ...
 \backmatter
 \begin{acknowledgements} ... \end{acknowledgements}
-\bibliographystyle{junsrt}
+\bibliographystyle{jIEEEtran}
 \bibliography{references}
 \end{document}
 ```
@@ -113,8 +113,10 @@ PDF は `build/` に出力されます。
 
 ### 参考文献
 
-`natbib`（番号順・圧縮）を読み込んでいます。日本語モードは `junsrt`、英語モードは `IEEEtran` などを使ってください。
-英語モードの論文で日本語文献を引く場合は、`IEEEtran` が日本語の名前を正しく略せないため、英語表記で書いてください。
+`natbib`（番号順・圧縮）を読み込んでいます。スタイルは両モードとも **`jIEEEtran`** を推奨します（サンプルもこれを使っています）。
+IEEEtran の日本語対応版で、TeX Live に標準で入っています。英語文献は IEEEtran と同じ体裁になり、
+日本語文献は氏名を略さず「雲居 玄道, 八木 秀樹, “題目”, 誌名, vol. 14, …」の形で出ます。
+`.bib` の日本語文献は、著者名を `雲居 玄道` のように姓と名の間に空白を入れて書いてください。
 
 ## 既知の注意点
 
