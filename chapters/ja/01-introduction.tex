@@ -1,0 +1,22 @@
+\chapter{序論}
+
+\section{研究の背景}
+
+特徴ベクトルからデータの所属カテゴリを推定する問題を分類問題という。
+カテゴリ数 $M \geq 3$ の多値分類問題に対しては、複数の2値分類器を組み合わせる
+誤り訂正出力符号（Error-Correcting Output Codes; ECOC）\cite{dietterich1994}が知られている。
+2値分類器としては Support Vector Machine \cite{vapnik1998} などが用いられる。
+ECOC の最適性については文献\cite{kumoi2021}で議論されている。
+
+和文と欧文が混在する箇所の強調も確認しておく。
+\textbf{太字の和文と Bold Latin}、\textit{斜体の欧文 italic text と和文}、
+\textsf{ゴシック体と sans-serif} はいずれも組める\footnote{%
+  ltjs 系クラスでは luatexja-preset の deluxe 指定がないと、
+  和欧混在の斜体でフォントエラーになることがある。}。
+
+\section{本論文の構成}
+
+\begin{itemize}
+  \item 第\ref{chap:method}章では、提案手法と理論的な性質を述べる。
+  \item 第\ref{chap:conclusion}章では、結論と今後の課題を述べる。
+\end{itemize}

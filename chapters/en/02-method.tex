@@ -1,0 +1,57 @@
+\chapter{Proposed Method}\label{chap:method}
+
+\section{Formulation}
+
+Let $\mathcal{Y} = \{1, \dots, M\}$ be the set of categories and
+$\bm{W} \in \{0,1\}^{M \times L}$ the code-word table. The estimated
+category for an input $\bm{x}$ is
+\begin{equation}
+  \hat{y} = \operatorname*{argmin}_{y \in \mathcal{Y}} \sum_{l=1}^{L} \bigl| w_{yl} - f_l(\bm{x}) \bigr|.
+  \label{eq:decode}
+\end{equation}
+
+\begin{definition}
+The minimum Hamming distance between any two rows of the code-word table is
+called the minimum distance $d_{\min}$.
+\end{definition}
+
+\begin{theorem}\label{thm:bound}
+If the binary classifiers err independently with probability $p < 1/2$,
+the error rate of \eqref{eq:decode} decreases monotonically in $d_{\min}$.
+\end{theorem}
+
+\begin{proof}
+The input is decoded correctly whenever at most
+$\lfloor (d_{\min}-1)/2 \rfloor$ binary classifiers err, and the
+probability of this event increases with $d_{\min}$.
+\end{proof}
+
+\section{Experiments}
+
+Figure~\ref{fig:pipeline} shows the pipeline and Table~\ref{tab:result}
+the results.
+
+\begin{figure}[tb]
+  \centering
+  \begin{tikzpicture}[box/.style={draw,rounded corners,minimum height=8mm,minimum width=22mm}]
+    \node[box] (a) {Input $\bm{x}$};
+    \node[box,right=10mm of a] (b) {Binary $f_l$};
+    \node[box,right=10mm of b] (c) {Decoding};
+    \draw[->] (a) -- (b);
+    \draw[->] (b) -- (c);
+  \end{tikzpicture}
+  \caption{Classification pipeline of ECOC}\label{fig:pipeline}
+\end{figure}
+
+\begin{table}[tb]
+  \centering
+  \caption{Comparison of accuracy}\label{tab:result}
+  \begin{tabular}{lcc}
+    \toprule
+    Method & Accuracy & Code length $L$ \\
+    \midrule
+    One-vs-rest & 0.812 & 10 \\
+    Proposed    & \textbf{0.846} & 15 \\
+    \bottomrule
+  \end{tabular}
+\end{table}

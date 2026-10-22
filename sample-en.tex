@@ -1,0 +1,74 @@
+% !TEX program = lualatex
+% English mode sample (doctoral dissertation)
+% Build: latexmk sample-en.tex   (with latex-devkit: make build-local MAIN=sample-en.tex)
+%
+% Options:
+%   ja / en            language of the thesis (default: ja)
+%   master / doctor    master's thesis / doctoral dissertation (default: master)
+%   print              two-sided layout for printing (binding offset, chapters
+%                      start on odd pages, black links)
+%   draft              line numbers and a version/timestamp line on every page
+%   showyear           print the academic year on the cover (computed from
+%                      the build date)
+%   officialcolor      use the NUT VI blue #00A4E5 as is for the cover bands
+%   10pt / 11pt / 12pt body font size (default: 11pt)
+\documentclass[en,doctor]{tmlthesis}
+
+% Cover colors (hex RGB), if you want to change them
+% \tmlthesissetup{maincolor=2F3E46, accentcolor=84A98C}
+
+\etitle{Performance Evaluation of Multiclass Classifiers Based on Error-Correcting Output Codes}
+\eauthor{Firstname LASTNAME}
+\studentid{24000000}
+\esupervisor{Assoc.\ Prof.\ Gendo KUMOI}
+\efield{Information and Management Systems Engineering}
+% Optional. Leave these out and the cover stays English only.
+% \jtitle{誤り訂正出力符号に基づく多値分類法の性能評価に関する研究}
+% \jauthor{ラストネーム ファーストネーム}
+
+% \draftversion{v0.3}   % shown with the draft option
+
+\begin{document}
+
+\frontmatter
+\maketitle
+
+\begin{abstract}
+This dissertation studies multiclass classification based on
+error-correcting output codes (ECOC). We analyze the classification error of
+ECOC classifiers and show conditions under which the code-word table attains
+the optimal error rate. Experiments on text classification support the
+analysis.
+\end{abstract}
+
+\tableofcontents
+\listoffigures
+\listoftables
+
+\mainmatter
+\input{chapters/en/01-introduction}
+\input{chapters/en/02-method}
+\input{chapters/en/03-conclusion}
+
+\backmatter
+\begin{acknowledgements}
+I would like to thank my supervisor for the guidance throughout this work.
+\end{acknowledgements}
+
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+
+\begin{publications}
+\section*{Journal Papers}
+\begin{enumerate}
+  \item F. Lastname and G. Kumoi, ``Title of the journal paper,''
+        \textit{Journal Name}, vol.~1, no.~1, pp.~1--10, 2026.
+\end{enumerate}
+\section*{International Conferences}
+\begin{enumerate}
+  \item F. Lastname and G. Kumoi, ``Title of the conference paper,''
+        in \textit{Proc.\ Conference Name}, 2026, pp.~1--4.
+\end{enumerate}
+\end{publications}
+
+\end{document}

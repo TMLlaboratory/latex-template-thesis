@@ -1,0 +1,64 @@
+% !TEX program = lualatex
+% 日本語モード（修士論文）のサンプル
+% ビルド: latexmk sample-ja.tex   （latex-devkit なら make build-local MAIN=sample-ja.tex）
+%
+% オプション:
+%   ja / en            本文の言語（既定 ja）
+%   master / doctor    修士論文 / 博士論文（既定 master）
+%   print              両面印刷用（綴じ代つき・章は奇数ページから・リンクは黒）
+%   draft              下書き（行番号・各ページにバージョンとビルド日時）
+%   showyear           表紙に年度を表示（年度はビルド日から自動計算）
+%   officialcolor      表紙の帯を技大 VI の青 #00A4E5 そのままにする
+%   10pt / 11pt / 12pt 本文の文字サイズ（既定 11pt）
+\documentclass[ja,master]{tmlthesis}
+
+% 表紙の色を変えるとき（16進のRGB）
+% \tmlthesissetup{maincolor=2F3E46, accentcolor=84A98C}
+
+\jtitle{誤り訂正出力符号に基づく多値分類法の\\性能評価に関する研究}
+\etitle{Performance Evaluation of Multiclass Classifiers\\Based on Error-Correcting Output Codes}
+\jauthor{長岡 太郎}
+\eauthor{Taro NAGAOKA}
+\studentid{24000000}
+\jsupervisor{雲居 玄道 准教授}
+\jfield{情報・経営システム工学分野}
+\efield{Information and Management Systems Engineering}
+
+% \draftversion{v0.3}   % draft オプション時に表示するバージョン
+
+\begin{document}
+
+\frontmatter
+\maketitle
+
+\begin{abstract}
+This thesis studies multiclass classification based on error-correcting
+output codes (ECOC). We analyze the classification error of ECOC
+classifiers and show conditions under which the code-word table attains
+the optimal error rate. Experiments on text classification support the
+analysis.
+\end{abstract}
+
+% 和文の概要を本文に入れる場合
+% \begin{jabstract}
+% 本論文では……
+% \end{jabstract}
+
+\tableofcontents
+\listoffigures
+\listoftables
+
+\mainmatter
+\input{chapters/ja/01-introduction}
+\input{chapters/ja/02-method}
+\input{chapters/ja/03-conclusion}
+
+\backmatter
+\begin{acknowledgements}
+本研究を進めるにあたり、熱心にご指導いただいた雲居玄道准教授に深く感謝いたします。
+\end{acknowledgements}
+
+\bibliographystyle{junsrt}
+\bibliography{references}
+
+\end{document}

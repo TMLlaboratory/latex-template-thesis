@@ -1,0 +1,54 @@
+\chapter{提案手法}\label{chap:method}
+
+\section{定式化}
+
+カテゴリ集合を $\mathcal{Y} = \{1, \dots, M\}$、符号語表を
+$\bm{W} \in \{0,1\}^{M \times L}$ とする。入力 $\bm{x}$ に対する推定カテゴリは
+\begin{equation}
+  \hat{y} = \operatorname*{argmin}_{y \in \mathcal{Y}} \sum_{l=1}^{L} \bigl| w_{yl} - f_l(\bm{x}) \bigr|
+  \label{eq:decode}
+\end{equation}
+で与えられる。
+
+\begin{definition}
+符号語表の任意の2行の間のハミング距離の最小値を、最小距離 $d_{\min}$ という。
+\end{definition}
+
+\begin{theorem}\label{thm:bound}
+各2値分類器の誤り率が $p < 1/2$ で独立ならば、式\eqref{eq:decode}の誤り率は
+$d_{\min}$ について単調に減少する。
+\end{theorem}
+
+\begin{proof}
+2値分類器の誤り数が $\lfloor (d_{\min}-1)/2 \rfloor$ 以下なら正しく復号される。
+この事象の確率は $d_{\min}$ について単調に増加する。
+\end{proof}
+
+\section{実験}
+
+図\ref{fig:pipeline}に処理の流れを、表\ref{tab:result}に結果を示す。
+
+\begin{figure}[tb]
+  \centering
+  \begin{tikzpicture}[box/.style={draw,rounded corners,minimum height=8mm,minimum width=22mm}]
+    \node[box] (a) {入力 $\bm{x}$};
+    \node[box,right=10mm of a] (b) {2値分類器 $f_l$};
+    \node[box,right=10mm of b] (c) {復号};
+    \draw[->] (a) -- (b);
+    \draw[->] (b) -- (c);
+  \end{tikzpicture}
+  \caption{ECOC による分類の流れ}\label{fig:pipeline}
+\end{figure}
+
+\begin{table}[tb]
+  \centering
+  \caption{分類精度の比較}\label{tab:result}
+  \begin{tabular}{lcc}
+    \toprule
+    手法 & 正解率 & 符号長 $L$ \\
+    \midrule
+    1-vs-Rest & 0.812 & 10 \\
+    提案法    & \textbf{0.846} & 15 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
